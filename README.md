@@ -8,7 +8,7 @@ overview video: https://drive.google.com/file/d/1gNbQm5RnnHPBCNERbOZZrl8wE2LZG3Z
 <html>
 <body>
   
-  <iframe src="url video in google drive/preview" ></iframe>
+  <iframe src="https://drive.google.com/file/d/1gNbQm5RnnHPBCNERbOZZrl8wE2LZG3ZC/preview" ></iframe>
   
   <!--aloow full screen add tag -->
   
