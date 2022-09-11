@@ -4,11 +4,4 @@ app diplaying forecast weathr for any location provided using device location or
 
 overview video: https://drive.google.com/file/d/1gNbQm5RnnHPBCNERbOZZrl8wE2LZG3ZC/view?usp=sharing
 
-<!DOCTYPE html>
-<html>
-<body>
-  
-<iframe src="https://drive.google.com/file/d/1gNbQm5RnnHPBCNERbOZZrl8wE2LZG3ZC/preview" width="640" height="480" allow="autoplay"></iframe>
-
-</body>
-</html>
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://drive.google.com/file/d/1gNbQm5RnnHPBCNERbOZZrl8wE2LZG3ZC/preview)
