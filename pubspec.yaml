@@ -38,5 +38,7 @@ flutter_icons:
 
 flutter:
   uses-material-design: true
-  assets: [ ]
-  fonts: [ ]
+  assets:
+    - weather/
+    - weather/64x64/day/
+    - weather/64x64/night/
