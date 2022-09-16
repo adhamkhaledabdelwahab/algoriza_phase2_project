@@ -8,12 +8,22 @@ import 'package:weather_app/src/features/weather/presentation/pages/weather_page
 import 'package:weather_app/src/features/weather/presentation/widgets/splash_page_widgets/error_widget.dart';
 import 'package:weather_app/src/features/weather/presentation/widgets/splash_page_widgets/loading_widget.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  State<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
     WeatherCubit.get(context).fetchAppForecastWeathers();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return BlocConsumer<WeatherCubit, WeatherState>(
       listener: (_, state) {
         debugPrint('$state');
