@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:weather_app/src/core/components/custom_drawer.dart';
+import 'package:weather_app/src/core/components/reset_factory_alert_dialog.dart';
 import 'package:weather_app/src/features/weather/presentation/bloc/weather_cubit/weather_cubit.dart';
 import 'package:weather_app/src/features/weather/presentation/pages/other_locations_page/other_locations_page.dart';
 
@@ -20,11 +21,16 @@ class WeatherDrawerBody extends StatelessWidget {
             .weatherConditionDataEntity.iconPath;
         final favTempC =
             cubit.currentForecast!.currentWeatherDataEntity.temp_c.toInt();
-        final otherName = cubit.otherForecasts.last.locationDataEntity.name;
-        final otherIconPath = cubit.otherForecasts.last.currentWeatherDataEntity
-            .weatherConditionDataEntity.iconPath;
-        final otherTempC =
-            cubit.otherForecasts.last.currentWeatherDataEntity.temp_c.toInt();
+        final otherName = cubit.otherForecasts.isNotEmpty
+            ? cubit.otherForecasts.last.locationDataEntity.name
+            : "";
+        final otherIconPath = cubit.otherForecasts.isNotEmpty
+            ? cubit.otherForecasts.last.currentWeatherDataEntity
+                .weatherConditionDataEntity.iconPath
+            : "";
+        final otherTempC = cubit.otherForecasts.isNotEmpty
+            ? cubit.otherForecasts.last.currentWeatherDataEntity.temp_c.toInt()
+            : 0;
         return SafeArea(
           child: Container(
             height: double.infinity,
@@ -237,11 +243,13 @@ class WeatherDrawerBody extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Image.asset(
-                              otherIconPath,
-                              width: 50,
-                              height: 50,
-                            ),
+                            otherIconPath.isNotEmpty
+                                ? Image.asset(
+                                    otherIconPath,
+                                    width: 50,
+                                    height: 50,
+                                  )
+                                : Container(),
                             const SizedBox(
                               width: 8,
                             ),
@@ -266,7 +274,7 @@ class WeatherDrawerBody extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: HexColor("#4F5762"),
+                          backgroundColor: HexColor("#4F5762"),
                           padding: const EdgeInsets.symmetric(
                             vertical: 15,
                           ),
@@ -356,8 +364,10 @@ class WeatherDrawerBody extends StatelessWidget {
                       clipBehavior: Clip.hardEdge,
                       child: InkWell(
                         onTap: () {
-                          WeatherCubit.get(context).factoryReset();
                           WeatherCustomDrawer.toggleDrawer(context);
+                          Get.dialog(
+                            const ResetFactoryAlertDialog(),
+                          );
                         },
                         child: const ListTile(
                           dense: true,

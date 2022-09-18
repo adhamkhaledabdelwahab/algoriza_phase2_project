@@ -13,6 +13,8 @@ class WeekDaysTemp extends StatelessWidget {
         final cubit = WeatherCubit.get(context);
         final days = cubit
             .currentForecast!.forecastWeatherDataEntity.dayForecastDataEntities;
+        final yesterday = DateTime.now().subtract(const Duration(days: 1));
+        final today = DateTime.now();
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: days
@@ -21,12 +23,25 @@ class WeekDaysTemp extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        e.date.day ==
-                                DateTime.now()
-                                    .subtract(const Duration(days: 1))
-                                    .day
+                        DateTime(e.date.year, e.date.month, e.date.day)
+                                    .compareTo(
+                                  DateTime(
+                                    yesterday.year,
+                                    yesterday.month,
+                                    yesterday.day,
+                                  ),
+                                ) ==
+                                0
                             ? "Yesterday"
-                            : e.date.day == DateTime.now().day
+                            : DateTime(e.date.year, e.date.month, e.date.day)
+                                        .compareTo(
+                                      DateTime(
+                                        today.year,
+                                        today.month,
+                                        today.day,
+                                      ),
+                                    ) ==
+                                    0
                                 ? 'Today'
                                 : getFullWeekdayName(e.date.weekday),
                         maxLines: 1,
