@@ -4,4 +4,4 @@ app diplaying forecast weathr for any location provided using device location or
 
 overview video: https://drive.google.com/file/d/1gNbQm5RnnHPBCNERbOZZrl8wE2LZG3ZC/view?usp=sharing
 
-https://github.com/adhamkhaledabdelwahab/weather_app/blob/master/bandicam%202022-09-18%2005-26-52-837.mp4
+https://raw.githubusercontent.com/adhamkhaledabdelwahab/weather_app/master/bandicam%202022-09-18%2005-26-52-837.mp4
