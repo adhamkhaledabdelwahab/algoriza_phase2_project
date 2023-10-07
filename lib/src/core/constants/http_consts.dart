@@ -14,4 +14,4 @@ const dateParam = 'date';
 
 const daysParam = 'days';
 
-const apiKey = "b609743fc9854fd48cb150358220609";
+const apiKey = "ec9eaf7ca0d644c7a4f102703230710";
